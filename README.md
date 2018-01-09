@@ -17,6 +17,7 @@ The [ipaddr filter](http://docs.ansible.com/ansible/latest/playbooks_filters_ipa
 
 # Running the playbook
 Use the ansible-playbook command to run the included playbook.
+
 `[sean@rhel7]$ ansible-playbook ipaddr_test.yml`
 
 The playbook will create a local file called `rendered` which renders the included `template.j2` which includes examples with the ipaddr filter.
@@ -25,6 +26,12 @@ The playbook will create a local file called `rendered` which renders the includ
 [Click here to view the playbook](ipaddr_test.yml)
 
 # View the rendered template
+The rendered config will provider numerous examples.  For example:
+```
+Jinja2: {% raw %} Prefix: {{ sean_subnet | ipaddr('prefix') }} {% endraw %}
+Renders: Prefix: {{ sean_subnet | ipaddr('prefix') }}
+```
+
 [Click here to view the rendered template](rendered)
 
  ---
