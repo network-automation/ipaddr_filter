@@ -28,8 +28,8 @@ The playbook will create a local file called `rendered` which renders the includ
 # View the rendered template
 The rendered config will provider numerous examples.  For example:
 ```
-Jinja2: {% raw %} Prefix: {{ sean_subnet | ipaddr('prefix') }} {% endraw %}
-Renders: Prefix: {{ sean_subnet | ipaddr('prefix') }}
+Jinja2:  What is the range of usable IP address on {{sean_subnet}}? {{ sean_subnet | ipaddr('range_usable') }}
+Renders:  What is the range of usable IP address on 192.168.1.0/24? 192.168.1.1-192.168.1.254
 ```
 
 [Click here to view the rendered template](rendered)
