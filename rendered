@@ -1,0 +1,47 @@
+ipaddr filter examples:
+The var sean_subnet is: 192.168.1.0/24
+
+Jinja2:  IP Address: {{sean_subnet | ipaddr }}
+Renders: IP Address: 192.168.1.0/24
+
+Jinja2:  IPv4 Address: {{ sean_subnet | ipv4 }}
+Renders: IPv4 Address: 192.168.1.0/24
+
+Jinja2:  IPv6 Address: {{ sean_subnet | ipv6 }}
+Renders: IPv6 Address: False
+
+Jinja2:  Network: {{ sean_subnet | ipaddr('network') }}
+Renders: Network: 192.168.1.0
+
+Jinja2:  Prefix: {{ sean_subnet | ipaddr('prefix') }}
+Renders: Prefix: 24
+
+Jinja2:  What is the first usable IP on {{sean_subnet}}? {{ sean_subnet | ipaddr('next_usable') }}
+Renders: What is the first usable IP on 192.168.1.0/24? 192.168.1.1
+
+Jinja2:  What is the range of usable IP address on {{sean_subnet}}? {{ sean_subnet | ipaddr('range_usable') }}
+Renders:  What is the range of usable IP address on 192.168.1.0/24? 192.168.1.1-192.168.1.254
+
+Jinja2:  What is the last usable IP address on {{sean_subnet}}? {{ sean_subnet | ipaddr('last_usable') }}
+Renders: What is the last usable IP address on 192.168.1.0/24? 192.168.1.254
+
+Jinja2:  What is the 2nd usable address on {{sean_subnet}}? {{ sean_subnet | next_nth_usable(2) }}
+Renders: What is the 2nd usable address on 192.168.1.0/24? 192.168.1.2
+--------
+Loop method for providing  multiple IP addresses for use:
+
+Jinja:
+{% for n in range(10) %}
+  {{ sean_subnet | next_nth_usable(n) }}
+{% endfor %}
+Renders:
+
+  192.168.1.1
+  192.168.1.2
+  192.168.1.3
+  192.168.1.4
+  192.168.1.5
+  192.168.1.6
+  192.168.1.7
+  192.168.1.8
+  192.168.1.9

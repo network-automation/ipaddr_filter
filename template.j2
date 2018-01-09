@@ -1,0 +1,41 @@
+ipaddr filter examples:
+The var sean_subnet is: {{ sean_subnet }}
+
+Jinja2: {% raw %} IP Address: {{sean_subnet | ipaddr }} {% endraw %}
+Renders: IP Address: {{ sean_subnet | ipaddr }}
+
+Jinja2: {% raw %} IPv4 Address: {{ sean_subnet | ipv4 }} {% endraw %}
+Renders: IPv4 Address: {{ sean_subnet | ipv4 }}
+
+Jinja2: {% raw %} IPv6 Address: {{ sean_subnet | ipv6 }} {% endraw %}
+Renders: IPv6 Address: {{ sean_subnet | ipv6 }}
+
+Jinja2: {% raw %} Network: {{ sean_subnet | ipaddr('network') }} {% endraw %}
+Renders: Network: {{ sean_subnet | ipaddr('network') }}
+
+Jinja2: {% raw %} Prefix: {{ sean_subnet | ipaddr('prefix') }} {% endraw %}
+Renders: Prefix: {{ sean_subnet | ipaddr('prefix') }}
+
+Jinja2: {% raw %} What is the first usable IP on {{sean_subnet}}? {{ sean_subnet | ipaddr('next_usable') }} {% endraw %}
+Renders: What is the first usable IP on {{sean_subnet}}? {{ sean_subnet | ipaddr('next_usable') }}
+
+Jinja2: {% raw %} What is the range of usable IP address on {{sean_subnet}}? {{ sean_subnet | ipaddr('range_usable') }} {% endraw %}
+Renders:  What is the range of usable IP address on {{sean_subnet}}? {{ sean_subnet | ipaddr('range_usable') }}
+
+Jinja2: {% raw %} What is the last usable IP address on {{sean_subnet}}? {{ sean_subnet | ipaddr('last_usable') }} {% endraw %}
+Renders: What is the last usable IP address on {{sean_subnet}}? {{ sean_subnet | ipaddr('last_usable') }}
+
+Jinja2: {% raw %} What is the 2nd usable address on {{sean_subnet}}? {{ sean_subnet | next_nth_usable(2) }} {% endraw %}
+Renders: What is the 2nd usable address on {{sean_subnet}}? {{ sean_subnet | next_nth_usable(2) }}
+--------
+Loop method for providing  multiple IP addresses for use:
+
+Jinja: {% raw %}
+{% for n in range(10) %}
+  {{ sean_subnet | next_nth_usable(n) }}
+{% endfor %} {% endraw %}
+
+Renders:
+{% for n in range(10) %}
+  {{ sean_subnet | next_nth_usable(n) }}
+{% endfor %}
