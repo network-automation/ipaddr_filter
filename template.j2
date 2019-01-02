@@ -4,6 +4,9 @@ The var sean_subnet is: {{ sean_subnet }}
 Jinja2: {% raw %} IP Address: {{sean_subnet | ipaddr }} {% endraw %}
 Renders: IP Address: {{ sean_subnet | ipaddr }}
 
+Jinja2: {% raw %} IP Address: {{sean_subnet | ipaddr('netmask') }} {% endraw %}
+Renders: IP Address: {{ sean_subnet | ipaddr('netmask') }}
+
 Jinja2: {% raw %} IPv4 Address: {{ sean_subnet | ipv4 }} {% endraw %}
 Renders: IPv4 Address: {{ sean_subnet | ipv4 }}
 
